@@ -7,30 +7,24 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User
+ * Class Admin
  * 
  * @property int $id
- * @property string $first_name
- * @property string $last_name
- * @property string $mobile
+ * @property string $full_name
+ * @property string $username
  * @property string $password
- * @property string $email
- * @property string $avatar_file_path
  * @property int $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
- * @property Collection|Order[] $orders
  *
  * @package App\Models
  */
-class User extends Model
+class Admin extends Model
 {
-	protected $table = 'users';
+	protected $table = 'admin';
 	public static $snakeAttributes = false;
 
 	protected $casts = [
@@ -42,17 +36,9 @@ class User extends Model
 	];
 
 	protected $fillable = [
-		'first_name',
-		'last_name',
-		'mobile',
+		'full_name',
+		'username',
 		'password',
-		'email',
-		'avatar_file_path',
 		'status'
 	];
-
-	public function orders()
-	{
-		return $this->hasMany(Order::class);
-	}
 }
