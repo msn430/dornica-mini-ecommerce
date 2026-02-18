@@ -9,6 +9,8 @@ class IndexController extends Controller
     //
     public function index()
     {
-        return view('index');
+        $title = "صفحه اصلی";
+
+        return view('index', compact('title'));
     }
 }

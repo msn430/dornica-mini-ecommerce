@@ -2,11 +2,14 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>
-        فروشگاه درنیکا
-        | صفحه اصلی
+        {{config('project.title')}}
+        @isset($title)
+            |
+            {{ $title }}
+        @endisset
     </title>
 
     <link rel="stylesheet" href="{{asset('assets/styles/app.css')}}">
@@ -33,12 +36,12 @@
 @include('layout.icons')
 
 <!-- Header -->
-@include('layout.header')
+@includeWhen(!isset($withoutHeader),'layout.header')
 
 @yield('content')
 
 <!-- Footer -->
-@include('layout.footer')
+@includeWhen(!isset($withoutFooter),'layout.footer')
 
 <!-- Overlay -->
 <div class="overlay"></div>
