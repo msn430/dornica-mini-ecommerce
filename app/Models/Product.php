@@ -108,6 +108,21 @@ class Product extends Model
             $query->whereIn('product_category_id', $categoryIds);
         }
     }
+#[Scope]
+    protected function applySearch(Builder $query): void
+    {
+        $request = request();
+
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+            $query->whereAny([
+                'name',
+                'name_en',
+                'description',
+            ], 'LIKE' , "%$keyword%");
+        }
+
+    }
 
     public function productCategory()
     {

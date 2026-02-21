@@ -42,7 +42,7 @@
                         <p class="font-DanaMedium text-gray-700 dark:text-gray-200 text-lg">فیلترها
                         </p>
                     </span>
-                        <a href="http://127.0.0.1:8000/products/remove-filters"
+                        <a href="{{ route('products.index' , request()->except(['category_id' , 'exists'])) }}"
                            class="text-blue-500 dark:text-blue-400 text-sm cursor-pointer"> حذف فیلتر‌ها</a>
                     </div>
                     <!-- FILTERS -->
@@ -114,7 +114,13 @@
                                 فقط کالا های موجود
                             </label>
                         </div>
+                        @if(request()->filled('sort'))
+                            <input type="hidden" name="sort" value="{{request()->input('sort')}}">
+                        @endif
 
+                        @if(request()->filled('page'))
+                        <input type="hidden" name="page" value="{{request()->input('page')}}">
+                        @endif
 
                         <button type="submit" class="submit-btn" tabindex="3">فیلتر</button>
                     </div>
@@ -141,22 +147,22 @@
                                 <li
                                     class="{{activeSort('newest')}}"
                                 >
-                                    <a href="{{route('products.index', ['sort' => 'newest'])}}">جدید ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('newest'))}}">جدید ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('best_selling')}}"
                                 >
-                                    <a href="{{route('products.index', ['sort' => 'best_selling'])}}">پرفروش ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('best_selling'))}}">پرفروش ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('lowest')}}"
                                 >
-                                    <a href="{{route('products.index', ['sort' => 'lowest'])}}">ارزان ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('lowest'))}}">ارزان ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('highest')}}"
                                 >
-                                    <a href="{{route('products.index', ['sort' => 'highest'])}}">گران ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('highest'))}}">گران ترین</a>
                                 </li>
                             </ul>
 
@@ -173,80 +179,14 @@
                     class="grid grid-cols-1 xxs:grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 xs:gap-2 sm:gap-4"
                 >
                     @forelse($products as $product)
-                        <!-- PRODUCT ITEM -->
-                        <div class="swiper-slide product-card group">
-                            <!-- product header -->
-                            <div class="product-card_header">
-                                <div class="flex items-center gap-x-2">
-                                    <form action="http://127.0.0.1:8000/cart/add" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="2"/>
-                                        <input type="hidden" name="qty" value="1"/>
-
-                                        <div class="tooltip">
-                                            <button
-                                                type="submit"
-                                                class="rounded-full p-1.5 app-border app-hover"
-                                            >
-                                                <svg class="size-4">
-                                                    <use href="#shopping-cart"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="tooltiptext">
-                                                سبد خرید
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- badge offer -->
-                                @if($product->discount > 0)
-                                    <span class="product-card_badge">
-                                    {{number_format(calcPercent($product->price , $product->discount), 1)}}
-                                    %
-                                    تخفیف‌
-                                    </span>
-                                @endif
-                            </div>
-                            <!-- product img -->
-                            <a href="{{route('products.show' , $product->id)}}">
-                                <img
-                                    class="product-card_img group-hover:opacity-0 absolute"
-                                    src="http://127.0.0.1:8000/assets/images/products/1.png"
-                                    alt=""
-                                >
-                                <img class="product-card_img opacity-0 group-hover:opacity-100"
-                                     src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">
-                            </a>
-                            <!--  product footer -->
-                            <div class="space-y-2">
-                                <a href="{{route('products.show' , $product->id)}}" class="product-card_link">
-                                    {{$product->name}}
-                                    |
-                                    {{$product->name_en}}
-                                </a>
-                                <!-- Rate and Price -->
-                                <div class="product-card_price-wrapper">
-                                    <!-- Price -->
-                                    <div class="product-card_price">
-                                        @if($product->discount)
-                                            <del>{{number_format($product->price)}}<h6>تومان</h6></del>
-                                            <p>{{number_format($product->price - $product->discount)}}</p>
-                                            <span>تومان</span>
-                                        @else
-                                            <p>{{number_format($product->price)}}</p>
-                                            <span>تومان</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       @include('components.product')
                     @empty
 
                     @endforelse
 
                 </div>
                 <!-- PAGINATION -->
-                <div class="mt-10 w-full">
+                <div class="flex flex-row-reverse mt-10 w-full" dir="rtl">
                     {{$products->links()}}
                 </div>
             </div>

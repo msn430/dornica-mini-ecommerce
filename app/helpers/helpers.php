@@ -26,3 +26,32 @@ if (!function_exists('activeSort')) {
         return $request->input('sort') == $type ? 'text-blue-500' : 'text-gray-400';
     }
 }
+if (!function_exists('generateSortRouteParameter')) {
+
+    function generateSortRouteParameter(string $type): array
+    {
+        $request = request();
+
+        $queries = $request->all();
+
+        $queries['sort'] = $type;
+
+        return $queries;
+
+//            ['sort' => 'newest']
+    }
+}
+if (!function_exists('generateFilterRouteParameter')) {
+    function generateFilterRouteParameter(string $type): array
+    {
+        $request = request();
+
+        $queries = $request->all();
+
+        $queries['filter'] = $type;
+
+        return $queries;
+
+    }
+}
+
