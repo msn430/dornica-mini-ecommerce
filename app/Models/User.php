@@ -9,6 +9,7 @@ namespace App\Models;
 use App\Enums\UserStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -20,7 +21,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $mobile
  * @property string $password
  * @property string $email
- * @property string $avatar_file_path
+ * @property string|null $avatar_file_path
  * @property int $status
  * @property Carbon $created_at
  * @property Carbon $updated_at

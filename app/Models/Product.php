@@ -6,14 +6,17 @@
 
 namespace App\Models;
 
+use App\Enums\productStatus;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Product
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $name_en
@@ -21,11 +24,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $discount
  * @property int $qty
  * @property bool $status
+ * @property string|null $description
  * @property int $product_category_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property ProductCategory $productCategory
  * @property Collection|OrderItem[] $orderItems
  * @property Collection|ProductImage[] $productImages
@@ -34,40 +38,89 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Product extends Model
 {
-	use SoftDeletes;
-	protected $table = 'products';
-	public static $snakeAttributes = false;
+    use SoftDeletes;
 
-	protected $casts = [
-		'price' => 'int',
-		'discount' => 'int',
-		'qty' => 'int',
-		'status' => 'bool',
-		'product_category_id' => 'int'
-	];
+    protected $table = 'products';
+    public static $snakeAttributes = false;
 
-	protected $fillable = [
-		'name',
-		'name_en',
-		'price',
-		'discount',
-		'qty',
-		'status',
-		'product_category_id'
-	];
+    protected $casts = [
+        'price' => 'int',
+        'discount' => 'int',
+        'qty' => 'int',
+        'status' => ProductStatus::class,
+        'product_category_id' => 'int'
+    ];
 
-	public function productCategory()
-	{
-		return $this->belongsTo(ProductCategory::class);
-	}
+    protected $fillable = [
+        'name',
+        'name_en',
+        'price',
+        'discount',
+        'qty',
+        'status',
+        'description',
+        'product_category_id'
+    ];
 
-	public function orderItems()
-	{
-		return $this->hasMany(OrderItem::class);
-	}
+    #[Scope]
+    protected function applySort(Builder $query): void
+    {
+        $request = request();
 
-	public function productImages()
-	{
-		return $this->hasMany(ProductImage::class);
-	}
+        if ($request->filled('sort')) {
+            switch ($request->input('sort')) {
+                case 'best_selling':
+                {
+                    $query
+                        ->withSum('orderItems', 'qty')
+                        ->orderBy('order_items_sum_qty');
+                    break;
+                }
+                case 'lowest':
+                {
+                    $query->orderBy('price');
+                    break;
+                }
+                case 'highest':
+                {
+                    $query->orderByDesc('price');
+                    break;
+                }
+                default:
+                {
+                    $query->orderByDesc('created_at');
+                }
+            }
+        }
+    }
+
+    #[Scope]
+    protected function applyFilter(Builder $query): void
+    {
+        $request = request();
+
+        if ($request->filled('exists')) {
+            $query->where('qty', '>', 0);
+        }
+
+        if ($request->filled('category_id')) {
+            $categoryIds = array_keys($request->input('category_id'));
+            $query->whereIn('product_category_id', $categoryIds);
+        }
+    }
+
+    public function productCategory()
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function productImages()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 }

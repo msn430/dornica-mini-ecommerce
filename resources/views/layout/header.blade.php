@@ -127,7 +127,7 @@
             <div class="mobile-menu z-50 flex flex-col">
                 <!--  MENU MOBILE header -->
                 <div class="flex w-full items-center justify-between border-b-normal pb-4">
-                    <a href="index.html" class="text-xl font-MorabbaMedium">
+                    <a href="" class="text-xl font-MorabbaMedium">
                         فروشگاه<span class="text-blue-500">درنیکا</span>
                     </a>
                     <button class="close-menu-mobile">
