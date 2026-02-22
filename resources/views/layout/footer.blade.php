@@ -37,16 +37,16 @@
                 <div class="flex gap-x-10 child:space-y-2 child:text-gray-400">
                     <ul class="child-hover:text-blue-500 child:transition-all">
                         <li>
-                            <a href="http://127.0.0.1:8000')}}">صفحه اصلی</a>
+                            <a href="{{route('index')}}">صفحه اصلی</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1:8000/products')}}">فروشگاه</a>
+                            <a href="{{route('products.index')}}">فروشگاه</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1:8000/auth/login')}}">ورود به حساب کاربری</a>
+                            <a href="{{route('auth.login.index')}}">ورود به حساب کاربری</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1:8000/auth/register')}}">ثبت نام</a>
+                            <a href="{{route('auth.register.index')}}">ثبت نام</a>
                         </li>
                     </ul>
                 </div>

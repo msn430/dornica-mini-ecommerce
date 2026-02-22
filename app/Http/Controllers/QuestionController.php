@@ -10,8 +10,10 @@ class QuestionController extends Controller
 {
     public function index()
     {
+        $title = 'سوالات متداول';
+
         $questions = Question::all();
 
-        return view('questions', compact('questions'));
+        return view('questions', compact('questions', 'title'));
     }
 }

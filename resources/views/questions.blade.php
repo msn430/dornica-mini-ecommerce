@@ -29,9 +29,7 @@
 
         <div class="flex flex-col items-center justify-center gap-y-2.5 my-8">
             <span class="flex-center w-10 h-10 rounded-full bg-gray-800 dark:bg-gray-700">
-                <svg class="w-7 h-7 text-sky-400">
-                    <use href="#question-mark"></use>
-                </svg>
+                <img src="{{asset('assets/images/svg/help.svg')}}" alt="help">
             </span>
             <h2 class="font-DanaMedium text-lg">سوالات متداول</h2>
             <p class="text-gray-400 text-center">اگر سوال مورد نظر خود را پیدا نکردید به <span class="text-blue-400 cursor-pointer">پشتیبانی</span> تیکت بدهید </p>

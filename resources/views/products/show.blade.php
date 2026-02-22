@@ -54,22 +54,22 @@
                             class="grid grid-cols-12 child:col-span-3 child:app-border gap-x-4 child:size-16 child:rounded-lg child:cursor-pointer">
                             <div class="p-1 open-sliderModal">
                                 <img src="http://127.0.0.1:8000/assets/images/products/11.png"
-                                     class="object-cover  rounded-lg">
+                                     class="object-cover  rounded-lg" alt="">
                             </div>
                             <div class="p-1 open-sliderModal">
                                 <img src="http://127.0.0.1:8000/assets/images/products/12.webp"
-                                     class="object-cover  rounded-lg">
+                                     class="object-cover  rounded-lg" alt="">
                             </div>
                             <div class="p-1 open-sliderModal">
                                 <img src="http://127.0.0.1:8000/assets/images/products/13.webp"
-                                     class="object-cover  rounded-lg">
+                                     class="object-cover  rounded-lg" alt="">
                             </div>
                             <div class="overflow-hidden relative open-sliderModal">
                                 <svg class="absolute size-8 text-gray-100 top-4 left-4 z-10">
                                     <use href="#ellipsis"></use>
                                 </svg>
                                 <img src="http://127.0.0.1:8000/assets/images/products/14.webp"
-                                     class="object-cover rounded-lg blur-sm">
+                                     class="object-cover rounded-lg blur-sm" alt="">
                             </div>
                         </div>
                     </div>
@@ -122,16 +122,16 @@
                             <div class="swiper MobileProductSlider w-full">
                                 <div class="swiper-wrapper w-full child:w-full child:overflow-hidden child:rounded-lg">
                                     <div class="swiper-slide">
-                                        <img src="./images/products/11.png" alt="">
+                                        <img src="{{asset('assets/images/products/11.png')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="./images/products/12.webp" alt="">
+                                        <img src="{{asset('assets/images/products/12.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="./images/products/13.webp" alt="">
+                                        <img src="{{asset('assets/images/products/13.webp')}}" alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="./images/products/14.webp" alt="">
+                                        <img src="{{asset('assets/images/products/14.webp')}}" alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-pagination MobileProductSlider-pagination"></div>
