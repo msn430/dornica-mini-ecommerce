@@ -54,4 +54,11 @@ if (!function_exists('generateFilterRouteParameter')) {
 
     }
 }
+if (!function_exists('getUserFullName')) {
+    function getUserFullName(): string
+    {
+        return auth()->user()->first_name . ' ' . auth()->user()->last_name;
+
+    }
+}
 
