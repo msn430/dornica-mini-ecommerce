@@ -66,14 +66,18 @@
                         </td>
                     </tr>
                 @empty
-                    @include('errors.404')
+                    <tr>
+                        <td class="text-center size-12" colspan="6">
+                            {{config('project.field_404')}}
+                        </td>
+                    </tr>
                 @endforelse
                 </tbody>
             </table>
         </div>
-            <!-- PAGINATION -->
-            <div class="flex flex-row-reverse justify-center mt-10 w-full" dir="rtl">
-                {{$userOrders->links()}}
-            </div>
+        <!-- PAGINATION -->
+        <div class="flex flex-row-reverse justify-center mt-10 w-full" dir="rtl">
+            {{$userOrders->links()}}
+        </div>
     </div>
 @endsection

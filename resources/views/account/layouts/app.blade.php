@@ -20,7 +20,7 @@
                 <ul
                     class="w-full relative space-y-2 child:duration-300 child:transition-all child:py-3  child:px-2 child:flex child:gap-x-2 text-lg child:cursor-pointer child:rounded-lg">
 
-                    <li class=" bg-blue-500/10 text-blue-500">
+                    <li class="{{activeAccountSidebar('account.orders')}}">
                         <svg class="w-6 h-6 ">
                             <use href="#shopping-bag"></use>
                         </svg>
@@ -28,7 +28,7 @@
                             سفارش ها
                         </a>
                     </li>
-                    <li class="hover:text-blue-500">
+                    <li class="{{activeAccountSidebar('account.edit-profile.index')}}">
                         <svg class="w-6 h-6 ">
                             <use href="#cog"></use>
                         </svg>

@@ -18,6 +18,7 @@ class OrderController extends Controller
             ->orderByDesc('created_at')
             ->paginate(1);
 
-        return view('account.orders' , compact('title', 'userOrders'));
+
+            return view('account.orders', compact('title', 'userOrders'));
     }
 }

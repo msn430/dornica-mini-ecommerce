@@ -1,13 +1,14 @@
 <?php
 
+use App\Services\CartService;
+
 if (!function_exists('calcPercent')) {
 
-    function calcPercent(int|float $total, int|float $amount): float
+    function calcPercent(int|float $total, int|float $amount): int|float
     {
         return abs(($amount * 100) / $total);
     }
 }
-
 if (!function_exists('activeSort')) {
 
     function activeSort(string $type): ?string
@@ -60,5 +61,33 @@ if (!function_exists('getUserFullName')) {
         return auth()->user()->first_name . ' ' . auth()->user()->last_name;
 
     }
+}
+if (!function_exists('activeAccountSidebar')) {
+    function activeAccountSidebar(string $routeName): string
+    {
+//        bg-blue-500/10 text-blue-500
+//        hover:text-blue-500
+        if (Route::currentRouteName() == $routeName) {
+            return 'bg-blue-500/10 text-blue-500';
+        } else{
+            return 'hover:text-blue-500';
+        }
+    }
+}
+
+if (!function_exists('getUserCartCount')) {
+    function getUserCartCount(): int
+    {
+        return CartService::getCount();
+    }
+
+}
+
+if (!function_exists('getQtySync')) {
+    function getQtySync(int $productId): int
+    {
+        return CartService::getCartProductQty($productId);
+    }
+
 }
 

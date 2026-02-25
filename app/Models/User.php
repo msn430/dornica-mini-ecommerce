@@ -37,10 +37,7 @@ class User extends Authenticatable
 
 	protected $casts = [
 		'status' => UserStatus::class,
-	];
-
-	protected $hidden = [
-		'password'
+        'password' => 'hashed',
 	];
 
 	protected $fillable = [

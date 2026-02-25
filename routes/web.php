@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Account\EditProfileController;
-use App\Http\Controllers\Account\OrderController;
+use App\Http\Controllers\Account\OrderController as AccountOrderController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +34,7 @@ Route::prefix('contactUs')->name('contactUs.')->controller(ContactUsController::
 
 Route::prefix('account')->name('account.')->middleware('auth')->group(function () {
 
-    Route::get('orders', [OrderController::class, 'index'])->name('orders');
+    Route::get('orders', [AccountOrderController::class, 'index'])->name('orders');
 
     Route::prefix('edit-profile')->name('edit-profile.')->controller(EditProfileController::class)->group(function () {
 
@@ -40,6 +42,24 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
         Route::post('/', 'post')->name('post');
 
     });
+});
+
+Route::prefix('cart')->name('cart.')->middleware('auth')->controller(OrderController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('add', 'add')->name('add');
+
+    Route::get('{productId}/remove', 'removeItem')->name('remove-item');
+    Route::get('clear', 'clear')->name('clear');
+
+
+    Route::post('update-qty', 'updateQty')->name('update-qty');
+
+});
+
+Route::prefix('checkout')->name('checkout.')->middleware('auth')->controller(CheckoutController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+
 });
 
 
