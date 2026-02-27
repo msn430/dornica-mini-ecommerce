@@ -28,7 +28,7 @@
                         <use href="#sun"/>
                     </svg>
                 </button>
-                <a href="http://127.0.0.1:8000" class="flex flex-col text-center">
+                <a href="{{route('index')}}" class="flex flex-col text-center">
          <span class="font-MorabbaMedium text-4xl flex items-center">
              فروشگاه <span class="text-blue-500">درنیکا</span>
          </span>

@@ -72,7 +72,7 @@
                     <a href="{{route('products.index' , ['category_id' => [$category->id => 'on']])}}"
                        class="group flex">
                         <img src="{{asset('assets/images/category/5.png')}}"
-                             class="w-[100px] h-[100px] lg:w-[120px] lg:h-[120px] object-cover group-hover:grayscale group-hover:opacity-90 duration-300"
+                             class="w-25 h-25 lg:w-30 lg:h-30 object-cover group-hover:grayscale group-hover:opacity-90 duration-300"
                              alt="category1"/>
                         <p class="pt-1 text-sm lg:text-lg line-clamp-1">
                             {{$category->name}}

@@ -90,6 +90,8 @@ class CartService
 
     public static function getCartProductQty(int $productId) : int
     {
-        return self::getItems()[$productId]['qty'];
+        $userCart =  self::getItems();
+
+        return $userCart[$productId]->qty;
     }
 }

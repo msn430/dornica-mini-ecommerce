@@ -44,7 +44,7 @@
             </div>
 
             <div
-                class="relative w-[45rem]  mx-5 my-10 flex flex-col justify-center pt-12 pb-5 px-4 md:px-8 bg-white dark:bg-gray-800 shadow-md rounded-xl">
+                class="relative w-180  mx-5 my-10 flex flex-col justify-center pt-12 pb-5 px-4 md:px-8 bg-white dark:bg-gray-800 shadow-md rounded-xl">
                 <div class="sm:mx-auto sm:w-full">
                     <p class=" text-gray-800 dark:text-gray-100 font-DanaDemiBold text-lg">تماس با ما</p>
                     <p class="text-gray-700 dark:text-gray-200 font-Dana mt-2 mb-8">

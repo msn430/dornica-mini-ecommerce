@@ -5,7 +5,7 @@ use App\Http\Controllers\Account\OrderController as AccountOrderController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +44,7 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
     });
 });
 
-Route::prefix('cart')->name('cart.')->middleware('auth')->controller(OrderController::class)->group(function () {
+Route::prefix('cart')->name('cart.')->middleware('auth')->controller(CartController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('add', 'add')->name('add');
 
@@ -59,6 +59,7 @@ Route::prefix('cart')->name('cart.')->middleware('auth')->controller(OrderContro
 Route::prefix('checkout')->name('checkout.')->middleware('auth')->controller(CheckoutController::class)->group(function () {
 
     Route::get('/', 'index')->name('index');
+    Route::post('/', 'post')->name('post');
 
 });
 

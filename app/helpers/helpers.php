@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Order;
 use App\Services\CartService;
+use App\Services\OrderService;
 
 if (!function_exists('calcPercent')) {
 
@@ -69,7 +71,7 @@ if (!function_exists('activeAccountSidebar')) {
 //        hover:text-blue-500
         if (Route::currentRouteName() == $routeName) {
             return 'bg-blue-500/10 text-blue-500';
-        } else{
+        } else {
             return 'hover:text-blue-500';
         }
     }
@@ -88,6 +90,11 @@ if (!function_exists('getQtySync')) {
     {
         return CartService::getCartProductQty($productId);
     }
-
+}
+if (!function_exists('getUserOrdersCount')) {
+    function getUserOrdersCount(): int
+    {
+        return OrderService::getOrderCount();
+    }
 }
 

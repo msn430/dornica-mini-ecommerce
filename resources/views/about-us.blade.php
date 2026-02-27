@@ -79,7 +79,7 @@
                 </div>
             </div>
             <div class="flex justify-end w-full lg:w-2/4">
-                <img src="{{asset('assets/images/about/1.jpg')}}" class="rounded-lg lg:h-[35rem] object-cover w-[70%]" alt="">
+                <img src="{{asset('assets/images/about/1.jpg')}}" class="rounded-lg lg:h-140 object-cover w-[70%]" alt="">
             </div>
         </section>
 

@@ -16,9 +16,10 @@ class OrderController extends Controller
 
         $userOrders = Order::where('user_id', Auth::id())
             ->orderByDesc('created_at')
-            ->paginate(1);
+            ->paginate(6);
 
 
             return view('account.orders', compact('title', 'userOrders'));
     }
+
 }

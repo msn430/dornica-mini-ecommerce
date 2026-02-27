@@ -65,13 +65,12 @@
 
                         <!-- PRODUCT ITEM -->
                         @forelse($userCartItems as $cartItem)
-                            {{--                            @dd($cartItem)--}}
                             <div
                                 class="w-full flex justify-between relative border-b-2 border-gray-200 dark:border-white/20 ">
                                 <div class="flex flex-col sm:flex-row items-center gap-6">
                                     <!-- IMG AND COUNT BTN -->
                                     <div class="flex w-fit flex-col">
-                                        <img src="http://127.0.0.1:8000/assets/images/products/8.webp" class="w-36"
+                                        <img src="{{asset('assets/images/products/8.webp')}}" class="w-36"
                                              alt="">
                                         <div
                                             class="cursor-pointer flex items-center justify-between gap-x-1 rounded-lg border border-gray-200 dark:border-white/20 py-1 px-2">

@@ -6,7 +6,7 @@ use App\Http\Requests\OrderAddRequest;
 use App\Services\CartService;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class CartController extends Controller
 {
     public function index()
     {

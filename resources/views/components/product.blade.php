@@ -36,11 +36,11 @@
     <a href="{{route('products.show' , $product->id)}}">
         <img
             class="product-card_img group-hover:opacity-0 absolute"
-            src="http://127.0.0.1:8000/assets/images/products/1.png"
+            src="{{asset('assets/images/products/1.png')}}"
             alt=""
         >
         <img class="product-card_img opacity-0 group-hover:opacity-100"
-             src="http://127.0.0.1:8000/assets/images/products/1.png" alt="">
+             src="{{asset('assets/images/products/1.png')}}" alt="">
     </a>
     <!--  product footer -->
     <div class="space-y-2">

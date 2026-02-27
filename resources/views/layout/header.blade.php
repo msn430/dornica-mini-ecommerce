@@ -145,36 +145,36 @@
                         <svg class="size-4">
                             <use href="#arrow"/>
                         </svg>
-                        <a href="dashboard.html">دسته بندی</a>
+                        <a href="#">دسته بندی</a>
                     </li>
                     <li class="mobile-menu-item">
                         <svg class="size-5">
                             <use href="#user"/>
                         </svg>
-                        <a href="dashboard.html">حساب کاربری</a>
+                        <a href="{{route('account.orders')}}">حساب کاربری</a>
                     </li>
                     <li class="mobile-menu-item">
                         <svg class="size-5">
                             <use href="#shopping-cart"/>
                         </svg>
-                        <a href="shopping-cart.html">سبد خرید</a>
+                        <a href="{{route('cart.index')}}">سبد خرید</a>
                     </li>
                     <li class="mobile-menu-item">
                         <svg class="size-5">
                             <use href="#check-badge"/>
                         </svg>
-                        <a href="#">دربـاره مـا</a>
+                        <a href="{{route('about-us')}}">دربـاره مـا</a>
                     </li>
                     <li class="mobile-menu-item">
                         <svg class="size-5">
                             <use href="#phone"/>
                         </svg>
-                        <a href="contact-us.html">تـماس بـا مـا</a>
+                        <a href="{{route('contactUs.index')}}">تـماس بـا مـا</a>
                     </li>
                 </ul>
             </div>
             <!-- Logo -->
-            <a href="index.html" class="flex flex-col text-center">
+            <a href="{{route('index')}}" class="flex flex-col text-center">
                     <span class="font-MorabbaMedium text-3xl flex items-center">
                         فروشگاه<span class="text-blue-500">درنیکا</span>
                     </span>
@@ -248,25 +248,25 @@
                 <svg class="size-5">
                     <use href="#home"/>
                 </svg>
-                <a href="index.html">خانه</a>
+                <a href="{{route('index')}}">خانه</a>
             </li>
             <li>
                 <svg class="size-5">
                     <use href="#squares"/>
                 </svg>
-                <a href="shop.html">فروشگاه</a>
+                <a href="{{route('products.index')}}">فروشگاه</a>
             </li>
             <li>
                 <svg class="size-5">
                     <use href="#shopping-bag"/>
                 </svg>
-                <a href="shopping-cart.html">سبد خرید</a>
+                <a href="{{route('cart.index')}}">سبد خرید</a>
             </li>
             <li>
                 <svg class="size-5">
                     <use href="#user"/>
                 </svg>
-                <a href="dashboard.html">حساب من</a>
+                <a href="{{route('account.edit-profile.index')}}">حساب من</a>
             </li>
         </ul>
     </div>

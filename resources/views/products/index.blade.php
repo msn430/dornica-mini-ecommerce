@@ -6,7 +6,7 @@
         <nav class="flex mt-8" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                    <a href="http://127.0.0.1:8000"
+                    <a href="{{route('index')}}"
                        class="inline-flex items-center text-sm gap-x-1  text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <svg class="size-4 mb-0.5">
                             <use href="#home"/>
@@ -53,12 +53,14 @@
                                     class="w-full flex justify-between items-center px-2 xl:px-4 pt-4 mb-4 text-gray-800 dark:text-gray-100">
                                 <span>دسته بندی </span>
                                 <span id="icon-1" class="text-gray-800 dark:text-gray-100 ">
-                                <svg class="size-4 transition-transform duration-300 {{request()->filled('category_id') ? '-rotate-90' : '' }}">
+                                <svg
+                                    class="size-4 transition-transform duration-300 {{request()->filled('category_id') ? '-rotate-90' : '' }}">
                                     <use href="#chevron-left"></use>
                                 </svg>
                             </span>
                             </button>
-                            <div id="content-1" class="{{request()->filled('category_id') ? 'max-h-fit' : 'max-h-0'}}  overflow-hidden transition-all duration-300 ease-in-out ">
+                            <div id="content-1"
+                                 class="{{request()->filled('category_id') ? 'max-h-fit' : 'max-h-0'}}  overflow-hidden transition-all duration-300 ease-in-out ">
                                 <div class="pb-3 text-gray-700 dark:text-gray-300 w-full flex flex-col gap-y-1.5">
                                     @foreach($productCategories as $productCategory)
                                         <!-- item -->
@@ -108,7 +110,7 @@
                                 <span
                                     class="absolute inset-0 bg-gray-200 rounded-full transition-colors duration-200 ease-in-out peer-checked:bg-blue-500 dark:bg-neutral-700 dark:peer-checked:bg-blue-500 peer-disabled:opacity-50 peer-disabled:pointer-events-none"></span>
                                 <span
-                                    class="absolute top-1/2 start-0.5 -translate-y-1/2 size-5 bg-white rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-neutral-400 dark:peer-checked:bg-white"></span>
+                                    class="absolute top-1/2 inset-s-0.5 -translate-y-1/2 size-5 bg-white rounded-full shadow-xs transition-transform duration-200 ease-in-out peer-checked:translate-x-full dark:bg-neutral-400 dark:peer-checked:bg-white"></span>
                             </label>
                             <label for="hs-valid-toggle-switch" class="text-gray-800 dark:text-gray-100">
                                 فقط کالا های موجود
@@ -119,7 +121,7 @@
                         @endif
 
                         @if(request()->filled('page'))
-                        <input type="hidden" name="page" value="{{request()->input('page')}}">
+                            <input type="hidden" name="page" value="{{request()->input('page')}}">
                         @endif
 
                         <button type="submit" class="submit-btn" tabindex="3">فیلتر</button>
@@ -147,22 +149,26 @@
                                 <li
                                     class="{{activeSort('newest')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('newest'))}}">جدید ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('newest'))}}">جدید
+                                        ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('best_selling')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('best_selling'))}}">پرفروش ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('best_selling'))}}">پرفروش
+                                        ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('lowest')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('lowest'))}}">ارزان ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('lowest'))}}">ارزان
+                                        ترین</a>
                                 </li>
                                 <li
                                     class="{{activeSort('highest')}}"
                                 >
-                                    <a href="{{route('products.index', generateSortRouteParameter('highest'))}}">گران ترین</a>
+                                    <a href="{{route('products.index', generateSortRouteParameter('highest'))}}">گران
+                                        ترین</a>
                                 </li>
                             </ul>
 
@@ -179,7 +185,7 @@
                     class="grid grid-cols-1 xxs:grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 xl:grid-cols-3 gap-3 xs:gap-2 sm:gap-4"
                 >
                     @forelse($products as $product)
-                       @include('components.product')
+                        @include('components.product')
                     @empty
 
                     @endforelse
